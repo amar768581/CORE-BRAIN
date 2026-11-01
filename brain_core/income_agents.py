@@ -21,8 +21,6 @@ INCOME_DOMAINS = tuple(DEFAULT_TOPICS)
 
 
 class OnlineIncomeResearchSwarm:
-    """Ten research agents over income domains."""
-
     def __init__(self, subjects: dict[str, str] | None = None) -> None:
         self.subjects = dict(DEFAULT_TOPICS)
         if subjects:
