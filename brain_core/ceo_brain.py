@@ -11,8 +11,6 @@ from brain_core.income_agents import OnlineIncomeResearchSwarm
 
 
 class CEOBrain:
-    """Zero-budget executive brain: one call = one decision."""
-
     AVAILABLE_ENGINE = {"groq", "gemini", "rule_based"}
     ZERO_BUDGET_MIN_SCORE = 55
 
