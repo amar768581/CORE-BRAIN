@@ -117,3 +117,22 @@ class MultilingualTools:
     def detect_or_extract(self, text: str) -> tuple[str, list[str]]:
         code = detect_language(text)
         return code, self._extract_keywords(text, code)
+
+    def extract_keywords(self, text: str, max_keywords: int = 8) -> list[str]:
+        for attr in ("extract_seo_keywords", "keywords", "extract", "get_keywords"):
+            if hasattr(self, attr) and callable(getattr(self, attr)):
+                res = getattr(self, attr)(text)
+                if isinstance(res, list):
+                    return res[:max_keywords]
+        cleaned = re.sub(r"[^\w\s\u0900-\u0D7F]", " ", text or "", flags=re.UNICODE)
+        tokens = [t.strip("_") for t in cleaned.split() if len(t.strip("_")) > 1]
+        seen = set()
+        out = []
+        for t in tokens:
+            low = t.lower()
+            if low not in seen:
+                seen.add(low)
+                out.append(t)
+            if len(out) >= max_keywords:
+                break
+        return out

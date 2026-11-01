@@ -71,35 +71,26 @@ class CEOBrain:
     def _research_directive_fallback() -> list[dict[str, Any]]:
         return [{"topic": "core brain", "seo_score": 60, "engine": "rule_based"}]
 
-    def issue_directive(self, topic: str | None = None, language: str | None = None) -> dict[str, Any]:
-        if topic:
-            if language is None:
-                language = self.multilingual.detect(topic)
-        else:
-            language = language or self.multilingual.detect("English")
-
-        payload = {
-            "topic": topic or "Autonomous AI & Digital Media Growth",
-            "primary_keywords": ["ai", "digital", "media", "growth"],
-            "secondary_keywords": ["ai tools", "content strategy", "video marketing"],
-            "search_intent": "commercial",
-            "viral_hook": "AI Content That Scales: The 2026 Blueprint",
-            "hashtags": ["#AI", "#ContentStrategy", "#DigitalMarketing", "#Growth"],
-            "seo_score": 72,
-            "language": language,
+    def issue_directive(self, topic: str = "Core Brain v2", language: str | None = None, **kwargs) -> dict[str, Any]:
+        detected_lang = language or self.multilingual.detect(topic)
+        keywords = self.multilingual.extract_keywords(topic)
+        seo_payload = {
+            "topic": topic,
+            "language": detected_lang,
+            "search_intent": "informational",
+            "seo_score": 88,
+            "primary_keywords": keywords,
+            "viral_hook": f"Top Zero-Budget Strategy for: {topic}",
+            "hashtags": [f"#{k}" for k in keywords[:5]],
         }
-
-        self.bus.broadcast(
-            sender="CEOBrain",
-            message="Directorate call: zero-budget research and LLM routing",
-            data={
-                "seo_strategy": payload,
-                "analytics": {"budget_status": "healthy", "sentiment": "positive", "best_format": "video", "roi_score": 82},
-            },
-        )
-
-        viable = self._filter_viable(self._research(payload["topic"]))
-        directive = self._build_directive(payload, viable, language)
+        raw_niches = self._research(topic)
+        viable = self._filter_viable(raw_niches)
+        directive = self._build_directive(seo_payload, viable, detected_lang)
+        directive["topic"] = topic
+        directive["language"] = detected_lang
+        directive["primary_keywords"] = keywords
+        directive["viral_hook"] = seo_payload["viral_hook"]
+        directive["hashtags"] = seo_payload["hashtags"]
         directive = self._enforce_zero_budget(directive)
 
         system_prompt = (
@@ -107,8 +98,8 @@ class CEOBrain:
             "keys: executive_summary, headline, content_plan, next_actions."
         )
         user_prompt = (
-            f"SEO strategy: {json.dumps(payload, ensure_ascii=False)}\n"
-            f"Viable niches: {json.dumps(directive['research_niches'], ensure_ascii=False)}\n"
+            f"SEO strategy: {json.dumps(seo_payload, ensure_ascii=False)}\n"
+            f"Viable niches: {json.dumps(directive.get('research_niches', []), ensure_ascii=False)}\n"
             "Produce the executive JSON object."
         )
         enriched = self._llm_enrich(system_prompt, user_prompt)
@@ -117,15 +108,19 @@ class CEOBrain:
             directive["headline"] = enriched.get("headline", directive.get("headline", ""))
             directive["content_plan"] = enriched.get("content_plan", directive.get("content_plan", []))
             directive["next_actions"] = enriched.get("next_actions", directive.get("next_actions", []))
-            directive["llm_engine"] = self.router.engines[0] if self.router.engines and self.router.engines[0] != "None" else "rule_based"
-
+        directive["llm_engine"] = (
+            self.router.engines[0]
+            if getattr(self.router, "engines", None) and self.router.engines[0] != "None"
+            else "rule_based"
+        )
         self.last_directive = directive
         self.bus.broadcast(
             sender="CEOBrain",
-            message=f"Zero-budget directive issued: {directive['budget_status']} / {directive['format_choice']}",
+            message=f"Zero-budget directive issued ({detected_lang}): {directive.get('budget_status')} / {directive.get('format_choice')}",
             data={"ceo_directive": directive},
         )
         return directive
+
 
     def verbose(self) -> str:
         d = self.last_directive

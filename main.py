@@ -35,10 +35,19 @@ def print_summary(bus, language, directive):
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Core Brain v2 CLI")
+    parser.add_argument("query", nargs="*", help="Topic or query text")
+    parser.add_argument("--topic", "-t", type=str, default="", help="Topic to analyze")
+    parser.add_argument("--language", "-l", type=str, default=None, help="Language code (e.g. bn, hi, en)")
+    args = parser.parse_args()
+
+    topic = args.topic or (" ".join(args.query) if args.query else "বাংলায় ফ্রি এআই ও অনলাইন ইনকাম ২০২৬")
     bus = SharedMemoryBus()
     ceo = CEOBrain(bus=bus)
-    directive = ceo.issue_directive(topic="Core Brain v2", language="en")
-    print_summary(bus, "en", directive)
+    lang = args.language or ceo.multilingual.detect(topic)
+    directive = ceo.issue_directive(topic=topic, language=lang)
+    print_summary(bus, directive.get("language", lang), directive)
 
 
 if __name__ == "__main__":
