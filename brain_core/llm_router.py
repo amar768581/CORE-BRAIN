@@ -14,8 +14,6 @@ GROQ_DEFAULT_MODEL = "llama-3.3-70b-versatile"
 
 
 class ZeroBudgetLLMRouter:
-    """Try Groq keys in rotation; then Gemini keys in rotation; then rules."""
-
     def __init__(self, timeout: float = 20.0, max_rotate: int = 3) -> None:
         self.timeout = timeout
         self.max_rotate = max_rotate
