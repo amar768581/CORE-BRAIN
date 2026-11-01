@@ -7,8 +7,13 @@ from brain_core.ceo_brain import CEOBrain
 from brain_core.orchestrator import CoreBrainOrchestrator
 
 __all__ = [
-    "SharedMemoryBus", "ZeroBudgetLLMRouter", "LLMClient", "MultilingualTools",
-    "OnlineIncomeResearchSwarm", "CEOBrain", "CoreBrainOrchestrator",
+    "SharedMemoryBus",
+    "ZeroBudgetLLMRouter",
+    "LLMClient",
+    "MultilingualTools",
+    "OnlineIncomeResearchSwarm",
+    "CEOBrain",
+    "CoreBrainOrchestrator",
 ]
 
 __version__ = "2.0.0"
