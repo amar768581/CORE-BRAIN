@@ -19,6 +19,18 @@ INDIAN_LANGUAGES = {
 
 INDIAN_LANGUAGE_CODES = tuple(INDIAN_LANGUAGES)
 
+_INDIC_RANGES = [
+    ("ta", "\u0B80-\u0BFF"),
+    ("kn", "\u0C80-\u0CFF"),
+    ("ml", "\u0D00-\u0D7F"),
+    ("te", "\u0C00-\u0C4F"),
+    ("bn", "\u0980-\u09FF"),
+    ("or", "\u0B00-\u0B7F"),
+    ("gu", "\u0A80-\u0AFF"),
+    ("pa", "\u0A00-\u0A7F"),
+    ("hi", "\u0900-\u097F"),
+]
+
 _STOPWORDS = {
     "the", "and", "or", "is", "are", "a", "an", "in", "on", "at", "to", "of",
     "for", "with", "by", "from", "it", "its", "this", "that", "these", "those",
@@ -31,37 +43,44 @@ _STOPWORDS = {
 }
 
 
+def _script_detected(text: str) -> str | None:
+    for code, rng in _INDIC_RANGES:
+        if re.search("[" + rng + "]", text):
+            return code
+    return None
+
+
 def detect_language(text: str) -> str:
-    """Detect the dominant Indian language of text; falls back to en."""
     if not text:
         return "en"
+    code = _script_detected(text)
+    if code:
+        return code
     for code, name in INDIAN_LANGUAGES.items():
-        if code in text or name in text:
+        if code in text or name.lower() in text.lower():
             return code
     return "en"
 
 
 class MultilingualTools:
-    """Unicode-safe keyword extraction tuned for Indian-language content."""
-
-    WILDCARD_PATTERN = re.compile(r"[\s_*]{2,}|[^\w\s\-'’]|[\u0900-\u097F]{1,2}")
-
     def __init__(self) -> None:
         self._cache: dict[str, tuple[str, list[str]]] = {}
 
-    def detect(self, text: str) -> str:
-        key = text[:500] if len(text) > 500 else text
-        if key in self._cache:
-            return self._cache[key][0]
-        code = detect_language(text)
-        self._cache[key] = (code, self._extract_keywords(text, code))
-        return code
+    @staticmethod
+    def _clean_text(text: str) -> str:
+        cleaned = []
+        for ch in text:
+            if ch in "*_~\t ":
+                cleaned.append(" ")
+            else:
+                cleaned.append(ch)
+        return re.sub(r"\s+", " ", "".join(cleaned)).strip()
 
     @staticmethod
     def _extract_keywords(text: str, language: str = "en") -> list[str]:
         if not text:
             return []
-        cleaned = re.sub(r"[^\w\s\-'’]", " ", text)
+        cleaned = MultilingualTools._clean_text(text)
         cleaned = re.sub(r"[\u0900-\u097F]{1,2}", " ", cleaned)
         tokens = []
         for chunk in cleaned.split():
@@ -79,6 +98,14 @@ class MultilingualTools:
                     continue
             tokens.append(token)
         return tokens
+
+    def detect(self, text: str) -> str:
+        key = text[:500] if len(text) > 500 else text
+        if key in self._cache:
+            return self._cache[key][0]
+        code = detect_language(text)
+        self._cache[key] = (code, self._extract_keywords(text, code))
+        return code
 
     def keywords(self, text: str, language: str | None = None) -> list[str]:
         code = language or detect_language(text)
