@@ -1,0 +1,28 @@
+agent,action,rank,name,ice,detail,next_step,stage,fix,channel,requirement,priority,covered,integration,phase,days,segment,window,topic
+Growth Lead,experiments + funnel + channels,1,Onboarding checklist,8.0,#1 Onboarding checklist - ICE 8.0,Scope a one-week test and define its success metric.,,,,,,,,,,,,
+Growth Lead,experiments + funnel + channels,2,Lifecycle email nudge,7.3,#2 Lifecycle email nudge - ICE 7.3,Scope a one-week test and define its success metric.,,,,,,,,,,,,
+Growth Lead,experiments + funnel + channels,3,Pricing page A/B test,7.0,#3 Pricing page A/B test - ICE 7.0,Scope a one-week test and define its success metric.,,,,,,,,,,,,
+Growth Lead,experiments + funnel + channels,4,Referral incentive,5.3,#4 Referral incentive - ICE 5.3,Scope a one-week test and define its success metric.,,,,,,,,,,,,
+Growth Lead,experiments + funnel + channels,5,,,Largest leak: Signups keeps only 7.5% of Visits,,Signups,Instrument this step and run one activation experiment this sprint.,,,,,,,,,,
+Growth Lead,experiments + funnel + channels,6,,,"Signups: 3,150 (7.5% from Visits)",,Signups,,,,,,,,,,,
+Growth Lead,experiments + funnel + channels,7,,,Paid: 126 (20.0% from Trials),,Paid,,,,,,,,,,,
+Growth Lead,experiments + funnel + channels,8,,,"Activated: 1,260 (40.0% from Signups)",,Activated,,,,,,,,,,,
+Growth Lead,experiments + funnel + channels,9,,,Trials: 630 (50.0% from Activated),,Trials,,,,,,,,,,,
+Growth Lead,experiments + funnel + channels,10,,,Scale Content/SEO - ROAS 22.37x,,,,Content/SEO,,,,,,,,,
+Growth Lead,experiments + funnel + channels,11,,,Cut or re-test Outbound - ROAS 3.3x,,,,Outbound,,,,,,,,,
+Growth Lead,experiments + funnel + channels,12,,,"Move ~15% of Outbound spend ($2,100) to Content/SEO and re-measure in two weeks",,,,Outbound,,,,,,,,,
+Growth Lead,experiments + funnel + channels,13,,,Hold Paid search at current budget - ROAS 5.4x,,,,Paid search,,,,,,,,,
+Solutions Engineer,fit + integrations + demo,1,,,[must] SSO (SAML): covered,,,,,SSO (SAML),must,True,,,,,,
+Solutions Engineer,fit + integrations + demo,2,,,[must] Audit logs: covered,,,,,Audit logs,must,True,,,,,,
+Solutions Engineer,fit + integrations + demo,3,,,[should] REST API: covered,,,,,REST API,should,True,,,,,,
+Solutions Engineer,fit + integrations + demo,4,,,[must] Data residency in EU: covered,,,,,Data residency in EU,must,True,,,,,,
+Solutions Engineer,fit + integrations + demo,5,,,[could] Slack notifications: gap,,,,,Slack notifications,could,False,,,,,,
+Solutions Engineer,fit + integrations + demo,6,,,Phase 1 (must-have): Snowflake export - 5d (effort M),,,,,,,,Snowflake export,Phase 1 (must-have),5,,,
+Solutions Engineer,fit + integrations + demo,7,,,Phase 1 (must-have): Salesforce - 10d (effort L),,,,,,,,Salesforce,Phase 1 (must-have),10,,,
+Solutions Engineer,fit + integrations + demo,8,,,Phase 2 (should-have): HubSpot - 5d (effort M),,,,,,,,HubSpot,Phase 2 (should-have),5,,,
+Solutions Engineer,fit + integrations + demo,9,,,Phase 3 (nice-to-have): Slack - 2d (effort S),,,,,,,,Slack,Phase 3 (nice-to-have),2,,,
+Solutions Engineer,fit + integrations + demo,10,,,0-4 min Discovery: Ask: What does your current RevOps manager workflow look like today?; Which step costs the most time or creates the most rework?; What would make this quarter a clear win for your team?,,,,,,,,,,,Discovery,0-4 min,Discovery
+Solutions Engineer,fit + integrations + demo,11,,,4-8 min Problem framing: Connect pipeline dashboard to the pain the RevOps manager just described.,,,,,,,,,,,Problem framing,4-8 min,Problem framing
+Solutions Engineer,fit + integrations + demo,12,,,8-32 min Live demo: Show pipeline dashboard; automated handoffs; forecast roll-up in one realistic scenario.,,,,,,,,,,,Live demo,8-32 min,Live demo
+Solutions Engineer,fit + integrations + demo,13,,,"32-41 min Technical Q&A: Cover API, SSO and security; log unknowns as follow-ups.",,,,,,,,,,,Technical Q&A,32-41 min,Technical Q&A
+Solutions Engineer,fit + integrations + demo,14,,,"41-45 min Next steps: Confirm success criteria, pilot scope and a deep-dive date.",,,,,,,,,,,Next steps,41-45 min,Next steps

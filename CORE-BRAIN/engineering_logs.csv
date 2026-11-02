@@ -1,0 +1,7 @@
+timestamp,agent,check_type,target,status,details
+2026-11-02T13:22:33+00:00,PrincipalArchitectAgent,routing_fallback,groq/llama-3.3-70b-versatile,PASS,primary route healthy; request never fails
+2026-11-02T13:22:33+00:00,PrincipalArchitectAgent,routing_fallback,gemini/gemini-2.5-flash,PASS,credit limit on groq - switches here; request never fails
+2026-11-02T13:22:33+00:00,PrincipalArchitectAgent,routing_fallback,openai/gpt-4o-mini,PASS,model retired on gemini - switches here; request never fails
+2026-11-02T13:22:33+00:00,QASecurityLeadAgent,file_audit,revenue_engine.py,PASS,"exists, 1250 rows"
+2026-11-02T13:22:33+00:00,QASecurityLeadAgent,file_audit,revenue_leads.csv,PASS,"exists, 27 rows"
+2026-11-02T13:22:33+00:00,QASecurityLeadAgent,file_audit,seo_results.csv,PASS,"exists, 12 rows"

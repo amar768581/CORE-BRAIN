@@ -1,0 +1,13 @@
+agent,action,rank,term,opportunity,detail,check,passed
+SEO Team,keywords,1,buy revops software,61.7,"#1 buy revops software - opportunity 61.7/100 (KD 18, 320/mo, transactional) [quick win]",,
+SEO Team,keywords,2,revenue operations platform,49.0,"#2 revenue operations platform - opportunity 49.0/100 (KD 42, 2,400/mo, commercial)",,
+SEO Team,keywords,3,what is revenue operations,43.5,"#3 what is revenue operations - opportunity 43.5/100 (KD 24, 6,600/mo, informational) [quick win]",,
+SEO Team,keywords,4,revops tools,32.0,"#4 revops tools - opportunity 32.0/100 (KD 61, 1,900/mo, commercial) [striking distance]",,
+SEO Team,audit,1,,,FAIL - internal links: 2 links - add at least 3 internal links,internal links,False
+SEO Team,audit,2,,,FAIL - image alt text: 1 image(s) missing alt text,image alt text,False
+SEO Team,audit,3,,,PASS - title tag: 45 chars,title tag,True
+SEO Team,audit,4,,,PASS - meta description: 107 chars,meta description,True
+SEO Team,audit,5,,,PASS - single H1: 1 H1,single H1,True
+SEO Team,audit,6,,,PASS - content depth: 410 words,content depth,True
+SEO Team,audit,7,,,PASS - HTTPS: served over HTTPS,HTTPS,True
+SEO Team,audit,8,,,PASS - mobile ready: renders on mobile,mobile ready,True

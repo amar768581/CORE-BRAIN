@@ -1,0 +1,10 @@
+timestamp,pod_id,role,source_action,deliverable,status,details
+2026-11-02T13:22:33+00:00,POD 1,Implementation Pod Lead,experiments + funnel + channels,#1 Onboarding checklist - ICE 8.0,ASSIGNED,round-robin slot 1/9 from revenue_leads.csv
+2026-11-02T13:22:33+00:00,POD 2,Implementation Pod Lead,experiments + funnel + channels,#4 Referral incentive - ICE 5.3,ASSIGNED,round-robin slot 2/9 from revenue_leads.csv
+2026-11-02T13:22:33+00:00,POD 3,Implementation Pod Lead,experiments + funnel + channels,Paid: 126 (20.0% from Trials),ASSIGNED,round-robin slot 3/9 from revenue_leads.csv
+2026-11-02T13:22:33+00:00,POD 1,Automation Engineer,experiments + funnel + channels,Scale Content/SEO - ROAS 22.37x,ASSIGNED,round-robin slot 4/9 from revenue_leads.csv
+2026-11-02T13:22:33+00:00,POD 2,Automation Engineer,experiments + funnel + channels,Hold Paid search at current budget - ROAS 5.4x,ASSIGNED,round-robin slot 5/9 from revenue_leads.csv
+2026-11-02T13:22:33+00:00,POD 3,Automation Engineer,fit + integrations + demo,[should] REST API: covered,ASSIGNED,round-robin slot 6/9 from revenue_leads.csv
+2026-11-02T13:22:33+00:00,POD 1,AI Specialist,fit + integrations + demo,Phase 1 (must-have): Snowflake export - 5d (effort M),ASSIGNED,round-robin slot 7/9 from revenue_leads.csv
+2026-11-02T13:22:33+00:00,POD 2,AI Specialist,fit + integrations + demo,Phase 3 (nice-to-have): Slack - 2d (effort S),ASSIGNED,round-robin slot 8/9 from revenue_leads.csv
+2026-11-02T13:22:33+00:00,POD 3,AI Specialist,fit + integrations + demo,8-32 min Live demo: Show pipeline dashboard; automated handoffs; forecast roll-up in one realistic scenario.,ASSIGNED,round-robin slot 9/9 from revenue_leads.csv
